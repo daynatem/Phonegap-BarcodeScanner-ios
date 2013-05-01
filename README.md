@@ -1,4 +1,8 @@
-Phonegap-BarcodeScanner-ios
+Phonegap-BarcodeScanner-ios Updated
 ===========================
 
-Barcode Scanner for Phonegap 2.6+
+Barcode Scanner for Cordova Phonegap 2.6+
+iOS Support
+
+Based on https://github.com/phonegap/phonegap-plugins/tree/master/iOS
+
