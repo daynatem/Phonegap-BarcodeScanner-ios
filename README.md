@@ -6,3 +6,5 @@ iOS Support
 
 Based on https://github.com/phonegap/phonegap-plugins/tree/master/iOS
 
+@daynatem Salvador Almaraz
+
