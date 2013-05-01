@@ -25,18 +25,64 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
     </head>
-    <body>
+    <body onload="onBodyLoad()">
         <div class="app">
             <h1>Apache Cordova</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
+             <button id="scan-button">scan something</button>
+
+            <p>scanned: <span id="scan-result">n/a</span>
         </div>
+
+       
+
+
         <script type="text/javascript" src="cordova-2.6.0.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/barcodescanner.js"></script>
         <script type="text/javascript">
             app.initialize();
+
+                function onBodyLoad()
+                {       
+                    document.addEventListener("deviceready", onDeviceReady, false);
+
+                scanButton = document.getElementById("scan-button");
+                resultSpan = document.getElementById("scan-result");
+
+                }
+
+                function onDeviceReady()
+                {
+                   
+
+                scanButton.addEventListener("click", clickScan, false);
+                createButton.addEventListener("click", clickCreate, false);
+
+                }
+
+                function clickScan() {
+                    window.plugins.barcodeScanner.scan(scannerSuccess, scannerFailure);
+                }
+
+
+                //------------------------------------------------------------------------------
+                function scannerSuccess(result) {
+                    console.log("scannerSuccess: result: " + result)
+                    resultSpan.innerText = "success: " + JSON.stringify(result)
+                }
+
+                //------------------------------------------------------------------------------
+                function scannerFailure(message) {
+                    console.log("scannerFailure: message: " + message)
+                    resultSpan.innerText = "failure: " + JSON.stringify(message)
+                }
+
+            
         </script>
+        
     </body>
 </html>
